@@ -55,6 +55,24 @@ static const HidButtonMapEntry kDualShock3ButtonMapping[] = {
     { 6, &ButtonsReport::dpad_down },
 };
 
+// Standard Nintendo Switch USB HID gamepad button order (HORI HORIPAD S, etc.):
+// bits 0..12 = Y, B, A, X, L, R, ZL, ZR, Minus, Plus, L3, R3, Home (positional Xbox layout)
+static const HidButtonMapEntry kSwitchUsbGamepadButtonMapping[] = {
+    { 1,  &ButtonsReport::a_button }, // Switch B (bottom) -> Xbox A
+    { 2,  &ButtonsReport::b_button }, // Switch A (right)  -> Xbox B
+    { 0,  &ButtonsReport::x_button }, // Switch Y (left)   -> Xbox X
+    { 3,  &ButtonsReport::y_button }, // Switch X (top)    -> Xbox Y
+    { 4,  &ButtonsReport::l1       }, // Switch L          -> Xbox LB
+    { 5,  &ButtonsReport::r1       }, // Switch R          -> Xbox RB
+    { 6,  &ButtonsReport::l2       }, // Switch ZL         -> Xbox LT
+    { 7,  &ButtonsReport::r2       }, // Switch ZR         -> Xbox RT
+    { 8,  &ButtonsReport::back     }, // Switch Minus      -> Xbox Back
+    { 9,  &ButtonsReport::start    }, // Switch Plus       -> Xbox Start
+    { 10, &ButtonsReport::l3       }, // Switch L3         -> Xbox LS
+    { 11, &ButtonsReport::r3       }, // Switch R3         -> Xbox RS
+    { 12, &ButtonsReport::xbox     }, // Switch Home       -> Xbox Guide
+};
+
 
 static HidDeviceMapping kStaticDeviceMappings[] = {
     // ds3
@@ -109,6 +127,14 @@ static HidDeviceMapping kStaticDeviceMappings[] = {
         0x057E, 0x2009,
         kDefaultAxisMap,  sizeof(kDefaultAxisMap) / sizeof(kDefaultAxisMap[0]),
         kPlayStationButtonMapping, sizeof(kPlayStationButtonMapping) / sizeof(kPlayStationButtonMapping[0]),
+        {false, true, false, false, false, true},
+    },
+
+    // HORI HORIPAD S for Nintendo Switch (USB wired, VID 0x0F0D / PID 0x00C1)
+    {
+        0x0F0D, 0x00C1,
+        kDefaultAxisMap,  sizeof(kDefaultAxisMap) / sizeof(kDefaultAxisMap[0]),
+        kSwitchUsbGamepadButtonMapping, sizeof(kSwitchUsbGamepadButtonMapping) / sizeof(kSwitchUsbGamepadButtonMapping[0]),
         {false, true, false, false, false, true},
     },
 };
