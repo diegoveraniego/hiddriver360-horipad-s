@@ -59,3 +59,5 @@ wine xextool.exe -e e -c c -o hiddriver-horipad.xex hiddriver-horipad-dec.xex
 ## Controller Diagnostic Tool
 
 The repository includes an optional [Xbox 360 Controller Diagnostic XEX](tools/controller-diagnostic/README.md). It shows the final XInput state for all four player slots and saves a log for review over FTP. It is a separate Aurora-launched app; it does not change plugin settings or mappings. It cannot inspect raw USB reports or manually launch hiddriver's mapping wizard.
+
+For an RGH/Aurora troubleshooting walkthrough, including copying the XEX over FTP, reading the log, and comparing one-button-at-a-time results, see the [diagnostic guide](tools/controller-diagnostic/README.md).
