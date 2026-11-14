@@ -55,3 +55,7 @@ wine xextool.exe -e e -c c -o hiddriver-horipad.xex hiddriver-horipad-dec.xex
 - [Rapidjson](https://github.com/Tencent/rapidjson/) — JSON library
 - [Lufa](https://github.com/abcminiuser/lufa) — HID report descriptor parser
 - [iMoD1998](https://github.com/iMoD1998) — Detours library
+
+## Controller Diagnostic Tool
+
+The repository includes an optional [Xbox 360 Controller Diagnostic XEX](tools/controller-diagnostic/README.md). It shows the final XInput state for all four player slots and saves a log for review over FTP. It is a separate Aurora-launched app; it does not change plugin settings or mappings. It cannot inspect raw USB reports or manually launch hiddriver's mapping wizard.
